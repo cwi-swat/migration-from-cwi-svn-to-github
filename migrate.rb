@@ -50,5 +50,9 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 		Dir.chdir(current_dir)
 	end
 end
-
-create_git_repo("rascal-shell", "rascal-shell", "", [])
+repos = [
+	#["rascal-shell", "rascal-shell", "", []],
+	#["rascal-eclipse", "rascal-eclipse", "", []],
+	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["features/*.jar", "plugins/*.jar"]]
+]
+repos.each { |svn, target, options, filters| create_git_repo(svn, target, options, filters) }
