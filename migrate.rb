@@ -51,8 +51,17 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 	end
 end
 repos = [
-	#["rascal-shell", "rascal-shell", "", []],
-	#["rascal-eclipse", "rascal-eclipse", "", []],
-	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"]]
+	["rascal", "rascal", "", []]
+	["rascal-shell", "rascal-shell", "", []],
+	["rascal-eclipse", "rascal-eclipse", "", []],
+	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"]],
+	["AmbiDexter", "AmbiDexter", "--nobranches", []],
+	["rascal-experiments", "rascal-experiments", "", []],
 ]
-repos.each { |svn, target, options, filters| create_git_repo(svn, target, options, filters) }
+repos.each do |svn, target, options, filters| 
+	puts "-----------------------"
+	puts "Working on #{svn}"
+	puts "-----------------------"
+
+	create_git_repo(svn, target, options, filters)
+end
