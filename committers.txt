@@ -19,4 +19,4 @@ stoel = Jouke Stoel <j.h.stoel@gmail.com>
 storm = Tijs van der Storm <T.van.der.Storm@cwi.nl>
 waruzjan = Waruzjan Shahbazian <waruzjan@cwi.nl>
 wietse  = Wietse Venema <wietsevenema@gmail.com>
-zaytsev = Vadim Zaytsev <vadim@grammarware.net>
+zaytsev = Vadim Zaytsev <spider.vz@gmail.com>
