@@ -39,9 +39,9 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 		puts "Filtering history if needed"
 		filters.each do |f|
 			execute_cmd("git filter-branch --index-filter 'git rm --cached --ignore-unmatch \"#{f}\"' --prune-empty --tag-name-filter cat -- --all")
+			`rm -rf .git/refs/original/`
 		end
 		if not filters.empty?
-			`rm -rf .git/refs/original/`
 			execute_cmd("git reflog expire --expire=now --all")
 			execute_cmd("git gc --prune=now")
 			execute_cmd("git gc --aggressive --prune=now")
@@ -53,6 +53,6 @@ end
 repos = [
 	#["rascal-shell", "rascal-shell", "", []],
 	#["rascal-eclipse", "rascal-eclipse", "", []],
-	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["features/*.jar", "plugins/*.jar"]]
+	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"]]
 ]
 repos.each { |svn, target, options, filters| create_git_repo(svn, target, options, filters) }
