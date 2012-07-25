@@ -2,6 +2,7 @@ ai = Anastasia Izmaylova <A.Izmaylova@cwi.nl>
 anya = Anya Helene Bagge <anya@ii.uib.no>
 basten = Bas Basten <basten@cwi.nl>
 bertl = Bert Lisser <Bert.Lisser@cwi.nl>
+cdegouw = Stijn de Gouw <cdegouw@cwi.nl>
 daybuild = Dailt Build Bot <daybuild@cwi.nl>
 emilie = Emilie Balland <emilie.balland@gmail.com>
 hills = Mark Hills <mhills@acm.org>
