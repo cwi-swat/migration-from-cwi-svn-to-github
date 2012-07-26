@@ -61,7 +61,8 @@ def join_multiple(repos, target)
 
 			puts "Moving the repository in a subdir"
 			Dir.chdir("#{target_dir}/#{r}")
-			execute_cmd("git filter-branch --prune-empty --index-filter 'git ls-files -s | gsed \"s-$(printf '\\''\\t'\\'')\\\"*-&#{r}/-\" | GIT_INDEX_FILE=$GIT_INDEX_FILE.new git update-index --index-info && (mv \"$GIT_INDEX_FILE.new\" \"$GIT_INDEX_FILE\" || true)' HEAD")
+			r_fixed = r.gsub("-","\\-")
+			execute_cmd("git filter-branch --prune-empty --index-filter 'git ls-files -s | gsed \"s-$(printf '\\''\\t'\\'')\\\"*-&#{r_fixed}/-\" | GIT_INDEX_FILE=$GIT_INDEX_FILE.new git update-index --index-info && (mv \"$GIT_INDEX_FILE.new\" \"$GIT_INDEX_FILE\" || true)' HEAD")
 			`rm -rf .git/refs/original/`
 			execute_cmd("git reflog expire --expire=now --all")
 			execute_cmd("git gc --prune=now")
