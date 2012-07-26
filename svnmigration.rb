@@ -3,7 +3,6 @@ require 'ftools'
 require 'open3'
 require 'pty'
 
-
 def execute_cmd(cmd)
 	begin
 	  PTY.spawn( cmd ) do |stdin, stdout, pid|
@@ -49,20 +48,4 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 	ensure
 		Dir.chdir(current_dir)
 	end
-end
-repos = [
-	#["rascal", "rascal", "", []]
-	#["rascal-shell", "rascal-shell", "", []],
-	#["rascal-eclipse", "rascal-eclipse", "", []],
-	#["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"]],
-	#["AmbiDexter", "AmbiDexter", "--nobranches", []],
-	#["rascal-experiments", "rascal-experiments", "", []],
-	["saga", "saga", "", []]
-]
-repos.each do |svn, target, options, filters| 
-	puts "-----------------------"
-	puts "Working on #{svn}"
-	puts "-----------------------"
-
-	create_git_repo(svn, target, options, filters)
 end
