@@ -46,17 +46,17 @@ def join_multiple(repos, target)
 		open("README.md", "w") do |f|
 			f.puts "This #{target} repository is a collection of the trunk of the following repositories:"
 			f.puts ""
-			repos.each do |r|
+			repos.each do |r, c|
 				f.puts "  - #{r}"
 			end
 		end
 		`git add README.md && git commit -m "Added initial readme"`
 
-		repos.each do |r|
+		repos.each do |r, c|
 			puts "Working on #{r}"
 			Dir.chdir(target_joined_dir)
 			`svn propget svn:ignore svn+ssh://svn.cwi.nl/#{r}/trunk/ > default.gitignore`
-			create_git_repo(r, r, "--nobranches --notags", [])
+			create_git_repo(r, r, "#{c} --nobranches --notags", [])
 
 
 			puts "Moving the repository in a subdir"
@@ -75,5 +75,3 @@ def join_multiple(repos, target)
 		Dir.chdir(current_dir)
 	end
 end
-
-join_multiple(["JJTraveler", "tide"], "meta-stuff")

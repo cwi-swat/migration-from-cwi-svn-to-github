@@ -31,9 +31,10 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 		execute_cmd("svn2git svn+ssh://svn.cwi.nl/#{svn_name} -v --authors #{current_dir}/committers.txt #{extra_params}")
 
 		puts "Adding new .gitignore"
+		last_date = `git show -s --format="%ci" HEAD`
 		File.copy("#{current_dir}/default.gitignore", "#{target_dir}/.gitignore")
 		`git add .gitignore`
-		`git commit -m "Added default gitignore file"`
+		`git commit --date="#{last_date}" -m "Added gitignore file"`
 
 		puts "Filtering history if needed"
 		filters.each do |f|
