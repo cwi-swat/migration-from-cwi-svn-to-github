@@ -1,7 +1,7 @@
 require 'svnmigration'
 
 repos = [
-	["rascal", "rascal", "", [], 0, "../default.gitignore"]
+	["rascal", "rascal", "", [], 0, "../default.gitignore"],
 	["rascal-eclipse", "rascal-eclipse", "", [], 0, "../default.gitignore"],
 	["rascal-experiments", "rascal-experiments", "", [], 0, "../default.gitignore"],
 	["rascal-feature", "rascal-feature", "", [], 0, "../default.gitignore"],
