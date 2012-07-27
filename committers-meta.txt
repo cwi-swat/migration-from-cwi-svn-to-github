@@ -1,11 +1,11 @@
 ai = Anastasia Izmaylova <A.Izmaylova@cwi.nl>
-ali = Ali Mesbah <>
+ali = Ali Mesbah <amesbah@ece.ubc.ca>
 anya = Anya Helene Bagge <anya@ii.uib.no>
-arie = Arie van Deursen <>
-asbin = Pierre-Etienne Moreau <>
+arie = Arie van Deursen <arie.van.deursen@gmail.com>
+asbin = Pierre-Etienne Moreau <pemoreau.mail@gmail.com>
 basten = Bas Basten <basten@cwi.nl>
 bertl = Bert Lisser <Bert.Lisser@cwi.nl>
-bie = Pieter de Bie <>
+bie = Pieter de Bie <frimmirf@gmail.com>
 bruntink = Magiel Bruntink <>
 cdegouw = Stijn de Gouw <cdegouw@cwi.nl>
 cleve = Anthony Cleve <>
