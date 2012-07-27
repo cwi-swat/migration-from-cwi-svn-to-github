@@ -1,13 +1,17 @@
 require 'svnmigration'
 
 repos = [
-	#["rascal", "rascal", "", []]
-	#["rascal-shell", "rascal-shell", "", []],
-	#["rascal-eclipse", "rascal-eclipse", "", []],
-	#["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"]],
-	#["AmbiDexter", "AmbiDexter", "--nobranches", []],
-	#["rascal-experiments", "rascal-experiments", "", []],
-	["saga", "saga", "", []]
+	["rascal", "rascal", "", []]
+	["rascal-eclipse", "rascal-eclipse", "", []],
+	["rascal-experiments", "rascal-experiments", "", []],
+	["rascal-feature", "rascal-feature", "", []],
+	["rascal-fragment", "rascal-fragment", "", []],
+	["rascal-maude", "rascal-maude", "", []],
+	["rascal-msr", "rascal-msr", "--notags --nobranches", []],
+	["rascal-shell", "rascal-shell", "", []],
+	["rascal-plt", "rascal-plt", "", []],
+	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"]],
+	["AmbiDexter", "AmbiDexter", "--nobranches", []],
 ]
 repos.each do |svn, target, options, filters| 
 	puts "-----------------------"
