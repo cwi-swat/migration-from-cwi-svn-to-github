@@ -55,9 +55,9 @@ def join_multiple(repos, target)
 		repos.each do |r, rev|
 			puts "Working on #{r}"
 			Dir.chdir(target_joined_dir)
-			`svn propget svn:ignore #{rev > 0 ? "-r#{rev - 1}" : ""} svn+ssh://svn.cwi.nl/#{r}/trunk/ > default.gitignore`
+			#`svn propget svn:ignore #{rev > 0 ? "-r#{rev - 1}" : ""} svn+ssh://svn.cwi.nl/#{r}/trunk/ > default.gitignore`
 			c = rev > 0 ? "--revision 1:#{rev - 1}" : ""
-			create_git_repo(r, r, "#{c} --nobranches --notags", [])
+			create_git_repo(r, r, "#{c} --nobranches --notags", [], rev)
 
 
 			puts "Moving the repository in a subdir"

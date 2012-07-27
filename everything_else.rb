@@ -2,7 +2,7 @@ require 'join-several'
 #svn log -v svn+ssh://svn.cwi.nl | grep -B 2 "D /amstin" | head -1 | grep 'r[0-9]*' | awk '{print $1}' 
 singles = [
 	 ["action-semantics-tools", "action-semantics-tools", "", []],
-	["amstin", "amstin", "--revision 1:38674", []],
+	["amstin", "amstin", "--revision 1:38674", [], 38675],
 	["clafer", "clafer", "", []],
 	["rascal-dokre", "dokre", "", []],
 	["funcons", "funcons", "", []],
@@ -20,7 +20,7 @@ singles = [
 	["php", "php-analysis", "", []],
 	["quanda", "quanda", "", []],
 	["saga", "saga", "", []],
-	["relation-stores", "relation-stores", "--revision 1:5291", []],
+	["relation-stores", "relation-stores", "--revision 1:5291", [], 5292],
 	["resources", "resources", "", []],
 	["sordini", "sordini", "", []],
 	["jsaf", "super-awesome-fighters", "", []],
@@ -28,7 +28,8 @@ singles = [
 	["syntactic-clojure", "syntactic-clojure", "", []],
 	["timelytree","timelytree","", []],
 	["TyMoRe", "tymore", "", []],
-	["V2I", "visitor-to-interpreter", "--rootistrunk --no-minimize-url", []],
+	["V2I", "visitor-to-interpreter", "--rootistrunk --no-minimize-url", [], 0, "/dev/null"],
+	["waebric", "waebric", "", []]
 ]
 
 combinations = [
@@ -207,6 +208,6 @@ combinations = [
 	]
 ]
 
-ignored = ["derric", "101companies", "chess-dsl", "clops"]
+ignored = ["derric", "101companies", "chess-dsl", "clops", "CommCenter", "concurrent-data-structures", "d2", "data-structures", "git-www", "java-source-analysis", "pheme", "regService", "services"]
 
 combinations.each { |repos, target| join_multiple(repos, target) }

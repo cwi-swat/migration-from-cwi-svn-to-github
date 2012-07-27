@@ -18,7 +18,7 @@ def execute_cmd(cmd)
 	end
 end
 
-def create_git_repo(svn_name, git_name, extra_params, filters)
+def create_git_repo(svn_name, git_name, extra_params, filters, lastrev =0, gitignore_file = "")
 	puts "Cleaning up directory"
 	target_dir = "../#{git_name}"
 	FileUtils.rm_rf(target_dir) if File.directory?(target_dir)
@@ -32,7 +32,11 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 
 		puts "Adding new .gitignore"
 		last_date = `git show -s --format="%ci" HEAD`
-		File.copy("#{current_dir}/default.gitignore", "#{target_dir}/.gitignore")
+		if (gitignore_file != "")
+			File.copy(gitignore_file, "#{target_dir}/.gitignore")
+		else
+			`svn propget svn:ignore #{lastrev > 0 ? "-r#{lastrev - 1}" : ""} svn+ssh://svn.cwi.nl/#{r}/trunk/ > .gitignore`
+		end
 		`git add .gitignore`
 		`GIT_COMMITTER_DATE="#{last_date}" git commit --date="#{last_date}" -m "Added gitignore file"`
 
