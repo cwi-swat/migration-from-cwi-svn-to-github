@@ -52,10 +52,11 @@ def join_multiple(repos, target)
 		end
 		`git add README.md && git commit -m "Added initial readme"`
 
-		repos.each do |r, c|
+		repos.each do |r, rev|
 			puts "Working on #{r}"
 			Dir.chdir(target_joined_dir)
-			`svn propget svn:ignore svn+ssh://svn.cwi.nl/#{r}/trunk/ > default.gitignore`
+			`svn propget svn:ignore #{rev > 0 ? "-r#{rev - 1}" : ""} svn+ssh://svn.cwi.nl/#{r}/trunk/ > default.gitignore`
+			c = rev > 0 ? "--revision 1:#{rev - 1}" : ""
 			create_git_repo(r, r, "#{c} --nobranches --notags", [])
 
 
@@ -68,6 +69,13 @@ def join_multiple(repos, target)
 			execute_cmd("git gc --prune=now")
 			execute_cmd("git gc --aggressive --prune=now")
 
+			puts "Deleting if necesarry"
+			if (rev > 0)
+				deletion_date = `svn propget svn:date -r#{rev} --revprop svn+ssh://svn.cwi.nl`
+				`git rm -rf "#{r}"`
+				`GIT_COMMITTER_DATE="#{deletion_date}" git commit --date="#{deletion_date}" -m "Simulated removal of subversion repository"`
+			end
+
 			puts "Now merging"
 			Dir.chdir(target_joined_dir)
 			`git pull --no-ff ../#{r} master`
@@ -76,3 +84,5 @@ def join_multiple(repos, target)
 		Dir.chdir(current_dir)
 	end
 end
+
+#join_multiple([["aterm-csharp", ""], ["relational-aterms", ""]], "meta-stuff")
