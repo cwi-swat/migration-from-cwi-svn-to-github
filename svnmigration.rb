@@ -34,7 +34,7 @@ def create_git_repo(svn_name, git_name, extra_params, filters)
 		last_date = `git show -s --format="%ci" HEAD`
 		File.copy("#{current_dir}/default.gitignore", "#{target_dir}/.gitignore")
 		`git add .gitignore`
-		`git commit --date="#{last_date}" -m "Added gitignore file"`
+		`GIT_COMMITTER_DATE="#{last_date}" git commit --date="#{last_date}" -m "Added gitignore file"`
 
 		puts "Filtering history if needed"
 		filters.each do |f|
