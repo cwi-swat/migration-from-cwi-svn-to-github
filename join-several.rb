@@ -52,12 +52,12 @@ def join_multiple(repos, target)
 		end
 		`git add README.md && git commit -m "Added initial readme"`
 
-		repos.each do |r, rev|
+		repos.each do |r, rev, params|
 			puts "Working on #{r}"
 			Dir.chdir(target_joined_dir)
 			#`svn propget svn:ignore #{rev > 0 ? "-r#{rev - 1}" : ""} svn+ssh://svn.cwi.nl/#{r}/trunk/ > default.gitignore`
 			c = rev > 0 ? "--revision 1:#{rev - 1}" : ""
-			create_git_repo(r, r, "#{c} --nobranches --notags", [], rev)
+			create_git_repo(r, r, "#{c} #{params} --nobranches --notags", [], rev)
 
 
 			puts "Moving the repository in a subdir"
