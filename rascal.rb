@@ -13,10 +13,10 @@ repos = [
 	["rascal-update-site", "rascal-update-site", "--notags --nobranches", ["*.jar"], 0, "../default.gitignore"],
 	["AmbiDexter", "AmbiDexter", "--nobranches", [], 0, "../default.gitignore"],
 ]
-repos.each do |svn, target, options, filters| 
+repos.each do |svn, target, options, filters, rev, ignore| 
 	puts "-----------------------"
 	puts "Working on #{svn}"
 	puts "-----------------------"
 
-	create_git_repo(svn, target, options, filters)
+	create_git_repo(svn, target, options, filters, rev, ignore)
 end

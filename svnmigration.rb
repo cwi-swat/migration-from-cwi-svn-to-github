@@ -35,7 +35,8 @@ def create_git_repo(svn_name, git_name, extra_params, filters, lastrev =0, gitig
 		if (gitignore_file != "")
 			File.copy(gitignore_file, "#{target_dir}/.gitignore")
 		else
-			`svn propget svn:ignore #{lastrev > 0 ? "-r#{lastrev - 1}" : ""} svn+ssh://svn.cwi.nl/#{r}/trunk/ > .gitignore`
+			puts gitignore_file
+			`svn propget svn:ignore #{lastrev > 0 ? "-r#{lastrev - 1}" : ""} svn+ssh://svn.cwi.nl/#{svn_name}/trunk/ > .gitignore`
 		end
 		`git add .gitignore`
 		`GIT_COMMITTER_DATE="#{last_date}" git commit --date="#{last_date}" -m "Added gitignore file"`
