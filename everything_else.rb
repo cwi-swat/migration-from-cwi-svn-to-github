@@ -1,4 +1,5 @@
 require 'join-several'
+require 'svnmigration'
 #svn log -v svn+ssh://svn.cwi.nl | grep -B 2 "D /amstin" | head -1 | grep 'r[0-9]*' | awk '{print $1}' 
 singles = [
 	 ["action-semantics-tools", "action-semantics-tools", "", []],
@@ -210,9 +211,32 @@ combinations = [
 
 ignored = ["derric", "101companies", "chess-dsl", "clops", "CommCenter", "concurrent-data-structures", "d2", "data-structures", "git-www", "java-source-analysis", "pheme", "regService", "services"]
 
-combinations.each { |repos, target| join_multiple(repos, target) }
-singles.each { |svn, git, cmd, filters, rev, ignore| create_git_repo(svn, git, cmd, filters, rev == nil ? 0 : rev, ignore == nil ? "" : ignore) }
+#combinations.each { |repos, target| join_multiple(repos, target) }
+#singles.each { |svn, git, cmd, filters, rev, ignore| create_git_repo(svn, git, cmd, filters, rev == nil ? 0 : rev, ignore == nil ? "" : ignore) }
 
+combinations.each { |r, target|
+	current_dir = Dir.pwd
+	begin
+		Dir.chdir("../#{target}/joined/")
+		puts "Now pushing #{target} = #{`du -sh .git/`}"
+		`git remote add origin git@github.com:cwi-swat/#{target}.git`
+		execute_cmd("git push -f origin master")
+	ensure	
+		Dir.chdir(current_dir)
+	end
+}
+singles.each do |svn, target| 
+	current_dir = Dir.pwd
+	begin
+		Dir.chdir("../#{target}/")
+		puts "Now pushing #{target} = #{`du -sh .git/`}"
+		`git remote add origin git@github.com:cwi-swat/#{target}.git`
+		execute_cmd("git push -f --all")
+		execute_cmd("git push -f --tags")
+	ensure
+		Dir.chdir(current_dir)
+	end
+end
 #def checkValid(r, rev, c) 
 #	`svn ls  --depth empty svn+ssh://svn.cwi.nl/#{r}#{c.index("rootistrunk") == nil ? "/trunk":""}#{rev >0 ? "@#{rev-1}":""}`
 #end
