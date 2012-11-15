@@ -31,7 +31,7 @@ singles = [
 	["TyMoRe", "tymore", "--rootistrunk", []],
 	["V2I", "visitor-to-interpreter", "--rootistrunk", [], 0, "/dev/null"],
 	["waebric", "waebric", "", []],
-	["extreme-team-collaboration,"extreme-team-collaboration","",[]]
+	["extreme-team-collaboration","extreme-team-collaboration","",[]]
 ]
 
 combinations = [
