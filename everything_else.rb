@@ -30,7 +30,8 @@ singles = [
 	["timelytree","timelytree","--rootistrunk", []],
 	["TyMoRe", "tymore", "--rootistrunk", []],
 	["V2I", "visitor-to-interpreter", "--rootistrunk", [], 0, "/dev/null"],
-	["waebric", "waebric", "", []]
+	["waebric", "waebric", "", []],
+	["extreme-team-collaboration,"extreme-team-collaboration","",[]]
 ]
 
 combinations = [
@@ -70,18 +71,6 @@ combinations = [
 			["vis-plugin-generic-imp", 0,""],
 			["vis-plugin-graph-imp", 0, ""]
 		], "eclipse-meta-environment"
-	],
-	[
-		[
-			["extreme-team-collaboration", 0,""],
-			["graph-browser", 0,""],
-			["graphbrowser", 30151,""],
-			["graph-gui", 0,""],
-			["graph-support", 0,""],
-			["graph-support-java", 0,""],
-			["io-support", 0,""],
-			["io-support-java", 0, ""]
-		], "extreme-team-collaboration"
 	],
 	[
 		[
@@ -191,6 +180,13 @@ combinations = [
 			["vis-plugin-table", 23388,""],
 			["vis-plugin-treemap", 0,""],
 			["visualization-plugins", 22861,""],
+	                ["graph-browser", 0,""],
+			["graphbrowser", 30151,""],
+			["graph-gui", 0,""],
+			["graph-support", 0,""],
+			["graph-support-java", 0,""],
+			["io-support", 0,""],
+			["io-support-java", 0, ""]
 		], "meta-environment"
 	],
 	[
